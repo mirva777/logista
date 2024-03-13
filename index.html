@@ -148,29 +148,37 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const formData = new FormData(form);
-        let object = {};
-        formData.forEach((value, key) => {
-            if (!Reflect.has(object, key)) {
-                object[key] = value;
-                return;
-            }
-            if (!Array.isArray(object[key])) {
-                object[key] = [object[key]];    
-            }
-            object[key].push(value);
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('input, textarea').forEach(element => {
+            element.addEventListener('focus', () => {
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300); // Delay to allow keyboard to appear
+            });
         });
-
-        console.log("Form data object:", object);
-
-        // Sending data back to your Telegram bot
-        Telegram.WebApp.sendData(JSON.stringify(object));
+    
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            let object = {};
+            formData.forEach((value, key) => {
+                if (!Reflect.has(object, key)) {
+                    object[key] = value;
+                    return;
+                }
+                if (!Array.isArray(object[key])) {
+                    object[key] = [object[key]];    
+                }
+                object[key].push(value);
+            });
+    
+            console.log("Form data object:", object);
+    
+             Telegram.WebApp.sendData(JSON.stringify(object));
+        });
     });
-});
-</script>
+    </script>
+    
 </body>
 </html>
