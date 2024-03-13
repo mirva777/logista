@@ -32,21 +32,23 @@
 
     input[type="text"],
     input[type="number"],
+    input[type="email"],
     select,
     textarea {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         margin-bottom: 20px;
         border-radius: 5px;
         border: 1px solid #ddd;
-        box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
+        box-sizing: border-box;
     }
 
     input[type="submit"] {
+        width: 100%; /* Easier to tap on mobile */
         background-color: #0056b3;
         color: #ffffff;
         border: none;
-        padding: 10px 20px;
+        padding: 15px;
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
@@ -56,15 +58,17 @@
         background-color: #004494;
     }
 
-    .block, .block1 {
-        display: block;
-        margin-top: 50px;
+    @media (max-width: 768px) {
+        form {
+            padding: 15px;
+        }
     }
 </style>
 </head>
 <body>
 
 <h1>Enter Values into Database</h1>
+
 
 <form action="" method="post">
     <label for="fromDropdown">From which country</label>
@@ -138,6 +142,7 @@
         
         <label for="otherInfo">Other info:</label>
         <textarea id="otherInfo" name="otherInfo" required></textarea>
+    
     <input class="block" type="submit" value="Submit">
 </form>
 
