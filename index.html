@@ -1,25 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Database</title>
-    <style>
-        .block {
-            display : block;
-            margin-top: 50px;
-        }
-        .block1 {
-            display : block;
-        }
-        label{
-            display : block;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Entry Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+        line-height: 1.6;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    form {
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    label {
+        margin-top: 20px;
+        margin-bottom: 5px;
+        display: block;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
+    }
+
+    input[type="submit"] {
+        background-color: #0056b3;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #004494;
+    }
+
+    .block, .block1 {
+        display: block;
+        margin-top: 50px;
+    }
+</style>
 </head>
 <body>
-    <h1>Enter Values into Database</h1>
-    
-    <form action="" method="post">
-        <label for="fromDropdown">From which country</label>
+
+<h1>Enter Values into Database</h1>
+
+<form action="" method="post">
+    <label for="fromDropdown">From which country</label>
         <select id="fromDropdown" name="from">
             <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
@@ -41,7 +89,6 @@
 
         <label for="loadWeight">Load weight:</label>
         <input type="text" id="loadWeight" name="load weight" required>
-
         <label for="trailerType">Trailer type</label>   
         <select id="trailerType" name="trailerType">
             <option value="option1">Option 1</option>
@@ -91,36 +138,34 @@
         
         <label for="otherInfo">Other info:</label>
         <textarea id="otherInfo" name="otherInfo" required></textarea>
+    <input class="block" type="submit" value="Submit">
+</form>
 
-
-        <input class="block" type="submit" value="Submit">
-    </form>
-
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            let object = {};
-            formData.forEach((value, key) => {
-                if (!Reflect.has(object, key)) {
-                    object[key] = value;
-                    return;
-                }
-                if (!Array.isArray(object[key])) {
-                    object[key] = [object[key]];    
-                }
-                object[key].push(value);
-            });
-
-            console.log("Form data object:", object);
-
-            // Uncomment the line below to send data back to your Telegram bot
-            Telegram.WebApp.sendData(JSON.stringify(object));
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        let object = {};
+        formData.forEach((value, key) => {
+            if (!Reflect.has(object, key)) {
+                object[key] = value;
+                return;
+            }
+            if (!Array.isArray(object[key])) {
+                object[key] = [object[key]];    
+            }
+            object[key].push(value);
         });
+
+        console.log("Form data object:", object);
+
+        // Sending data back to your Telegram bot
+        Telegram.WebApp.sendData(JSON.stringify(object));
     });
-    </script>
+});
+</script>
 </body>
 </html>
