@@ -120,23 +120,19 @@
         <label for="city">Which city:</label>
         <input type="text" id="city" name="city" required>
         
-        <label for="loadName">Load name:</label>
+        <label for="loadName">Название груза:</label>
         <input type="text" id="loadName" name="load name" required>
 
-        <label for="loadWeight">Load weight:</label>
+        <label for="loadWeight">Вес груза:</label>
         <input type="text" id="loadWeight" name="load weight" required>
-        <label for="trailerType">Trailer type</label>   
+        <label for="trailerType">Тип прицепа:</label>   
         <select id="trailerType" name="trailerType">
-            <option value="option1">Option 1</option>
-            <option value="option2">Option 2</option>
-            <optgroup label="trtr">
-                <option value="subcategory1">Subcategory 1</option>
-                <option value="subcategory2">Subcategory 2</option>
-            </optgroup>
+            <option value="option1">Тент</option>
+            <option value="option2">Реф</option>
         </select>
 
-        <label for="paymentAmount">Payment amount:</label>
-        <input type="text" id="paymentAmount" name="payment amount" required>
+        <label for="paymentAmount">Ставка:</label>
+        <input type="text" id="paymentAmount" name="payment amount" required placeholder="в процентах">
         
         <label for="paymentType">Payment type</label>
         <select id="paymentType" name="payment type">
@@ -180,6 +176,11 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+const paymentAmountInput = document.getElementById("paymentAmount");
+
+paymentAmountInput.addEventListener("input", function() {
+  this.value = this.value.trim() + "%"; 
+});
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('input, textarea').forEach(element => {
             element.addEventListener('focus', () => {
