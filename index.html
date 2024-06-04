@@ -179,7 +179,11 @@
 const paymentAmountInput = document.getElementById("paymentAmount");
 
 paymentAmountInput.addEventListener("input", function() {
-  this.value = this.value.trim() + "%"; 
+  const value = this.value.trim(); // Trim leading/trailing spaces
+  if (value.endsWith("%")) { // Check if it already ends with "%"
+    return; // Don't add another "%" if it's already there
+  }
+  this.value = value + "%"; // Add "%" only if needed
 });
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('input, textarea').forEach(element => {
