@@ -132,43 +132,43 @@
         </select>
 
         <label for="paymentAmount">Ставка:</label>
-        <input type="text" id="paymentAmount" name="payment amount" required placeholder="в процентах">
+        <input type="number" id="paymentAmount" name="payment amount" required placeholder="в долларах">
         
-        <label for="paymentType">Payment type</label>
+        <label for="paymentType">Тип оплаты:</label>
         <select id="paymentType" name="payment type">
-            <option value="option1">Option 1</option>
+            <option value="option1"></option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
         </select>
 
-        <label for="prepayment">Prepayment in percents:</label>
-        <input type="text" id="prepayment" name="prepayment" required>
+        <label for="prepayment">Аванс:</label>
+        <input type="text" id="prepayment" name="prepayment" required placeholder="в процентах">
 
-        <label for="adr">ADR</label>
+        <label for="adr">АДР</label>
         <select id="adr" name="adr">
-            <option value="option1">Da</option>
-            <option value="option2">Net</option>
+            <option value="option1">Да</option>
+            <option value="option2">Нет</option>
         </select>
 
-        <label for="tir">Carnet TIR</label>
+        <label for="tir">ТИР</label>
         <select id="tir" name="tir">
-            <option value="option1">Da</option>
-            <option value="option2">Net</option>
+            <option value="option1">Да</option>
+            <option value="option2">Нет</option>
         </select>
         
-        <label for="carAmount">Car amount:</label>
+        <label for="carAmount">Количество машин:</label>
         <input type="number" id="carAmount" name="carAmount" required>
 
-        <label for="loadStatus">Load:</label>
+        <label for="loadStatus">Готовность груза:</label>
         <select id="loadStatus" name="loadStatus">
-            <option value="ready">Ready</option>
-            <option value="notReady">Not Ready</option>
+            <option value="ready">Готов к погрузке</option>
+            <option value="notReady">Не готов</option>
         </select>
 
-        <label for="contacts">Contacts:</label>
+        <label for="contacts">Контакты для связи:</label>
         <textarea id="contacts" name="contacts" required></textarea>
         
-        <label for="otherInfo">Other info:</label>
+        <label for="otherInfo">Прочая информация:</label>
         <textarea id="otherInfo" name="otherInfo" required></textarea>
     
     <input class="block" type="submit" value="Submit">
@@ -176,15 +176,6 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-const paymentAmountInput = document.getElementById("paymentAmount");
-
-paymentAmountInput.addEventListener("input", function() {
-  const value = this.value.trim(); // Trim leading/trailing spaces
-  if (value.endsWith("%")) { // Check if it already ends with "%"
-    return; // Don't add another "%" if it's already there
-  }
-  this.value = value + "%"; // Add "%" only if needed
-});
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('input, textarea').forEach(element => {
             element.addEventListener('focus', () => {
