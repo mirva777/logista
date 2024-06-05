@@ -384,14 +384,23 @@ document.querySelectorAll('.clearable').forEach(input => {
 <script>
  document.addEventListener('DOMContentLoaded', function() {
             // Blur inputs on scroll
-            document.addEventListener('scroll', function() {
-                let inputs = document.querySelectorAll('input, select');
-                inputs.forEach(input => {
-                    if (document.activeElement === input) {
-                        input.blur();
-                    }
-                });
-            });
+            document.addEventListener('DOMContentLoaded', function() {
+    let inputs = document.querySelectorAll('input, select');
+
+    inputs.forEach(input => {
+        input.addEventListener('focus', function(event) {
+            input.blur();  // Immediately blur the input to prevent focusing
+        });
+    });
+
+    document.addEventListener('scroll', function() {
+        inputs.forEach(input => {
+            if (document.activeElement === input) {
+                input.blur();
+            }
+        });
+    });
+});
 
             // Handle form submission
             const form = document.querySelector('form');
