@@ -70,12 +70,15 @@
     input[type="submit"]:hover {
         background-color: #004494;
     }
-
     @media (max-width: 768px) {
         form {
             padding: 15px;
             overflow-anchor: auto;
         }
+        input {
+                font-size: 18px;
+                padding: 16px;
+            }
         input[type="text"],
         input[type="number"],
         textarea {
@@ -317,7 +320,7 @@ document.querySelectorAll('.clearable').forEach(input => {
         <input type="text" id="loadName" name="load name" required>
 
         <label for="loadWeight">Вес груза:</label>
-        <input type="text" id="loadWeight" name="load weight" required>
+        <input type="text" id="loadWeight" name="load weight" inputmode = "decimal" placeholder="в тоннах" required>
         <label for="trailerType">Тип прицепа:</label>   
         <select id="trailerType" name="trailerType">
             <option value="Тент">Тент</option>
