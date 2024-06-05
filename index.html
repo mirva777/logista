@@ -383,23 +383,23 @@ document.querySelectorAll('.clearable').forEach(input => {
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
  document.addEventListener('DOMContentLoaded', function() {
-            // Blur inputs on scroll
+    let isScrolling = false;
 
-    let inputs = document.querySelectorAll('input, select');
+// Add event listener to detect scrolling
+document.addEventListener('scroll', function() {
+    isScrolling = true;
+    setTimeout(() => { isScrolling = false; }, 100); // Reset the flag after a short delay
+});
 
-    inputs.forEach(input => {
-        input.addEventListener('focus', function(event) {
-            input.blur();  // Immediately blur the input to prevent focusing
-        });
+let inputs = document.querySelectorAll('input, select');
+
+inputs.forEach(input => {
+    input.addEventListener('focus', function(event) {
+        if (isScrolling) {
+            input.blur(); // Blur the input if it was focused during scroll
+        }
     });
-
-    document.addEventListener('scroll', function() {
-        inputs.forEach(input => {
-            if (document.activeElement === input) {
-                input.blur();
-            }
-        });
-    });
+});
 
 
             // Handle form submission
