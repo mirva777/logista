@@ -317,7 +317,7 @@ document.querySelectorAll('.clearable').forEach(input => {
     
         
         <label for="loadName">Название груза:</label>
-        <input type="text" id="loadName" name="load name" required>
+        <input type="text" id="loadName" inputmode = "text" name="load name" required>
 
         <label for="loadWeight">Вес груза:</label>
         <input type="text" id="loadWeight" name="load weight" inputmode = "decimal" placeholder="в тоннах" required>
@@ -385,34 +385,34 @@ document.querySelectorAll('.clearable').forEach(input => {
  document.addEventListener('DOMContentLoaded', function() {
     let isScrolling = false;
 
-// Function to handle scroll event
-function handleScroll() {
-    isScrolling = true;
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-        isScrolling = false;
-    }, 100);
+    // Function to handle scroll event
+    function handleScroll() {
+        isScrolling = true;
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            isScrolling = false;
+        }, 100);
 
-    let activeElement = document.activeElement;
-    if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'SELECT') {
-        activeElement.blur();
-    }
-}
-
-let scrollTimeout;
-
-// Add event listener to detect scrolling
-document.addEventListener('scroll', handleScroll);
-
-// Add focus event listener to all input and select elements
-let inputs = document.querySelectorAll('input, select');
-inputs.forEach(input => {
-    input.addEventListener('focus', function(event) {
-        if (isScrolling) {
-            input.blur(); // Blur the input if it was focused during scroll
+        let activeElement = document.activeElement;
+        if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'SELECT' || activeElement.tagName === 'TEXTAREA') {
+            activeElement.blur();
         }
+    }
+
+    let scrollTimeout;
+
+    // Add event listener to detect scrolling
+    document.addEventListener('scroll', handleScroll);
+
+    // Add focus event listener to all input, select, and textarea elements
+    let inputs = document.querySelectorAll('input, select, textarea');
+    inputs.forEach(input => {
+        input.addEventListener('focus', function(event) {
+            if (isScrolling) {
+                input.blur(); // Blur the input if it was focused during scroll
+            }
+        });
     });
-});
 
             // Handle form submission
             const form = document.querySelector('form');
