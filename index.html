@@ -383,29 +383,36 @@ document.querySelectorAll('.clearable').forEach(input => {
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
  document.addEventListener('DOMContentLoaded', function() {
-    let isScrolling;
+    let isScrolling = false;
 
-    // Add event listener to detect scrolling
-    document.addEventListener('scroll', function() {
-        clearTimeout(isScrolling);
-        isScrolling = setTimeout(() => {
-            let activeElement = document.activeElement;
-            if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'SELECT') {
-                activeElement.blur(); // Blur the active input if scrolling
-            }
-        }, 100);
+// Function to handle scroll event
+function handleScroll() {
+    isScrolling = true;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+    }, 100);
+
+    let activeElement = document.activeElement;
+    if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'SELECT') {
+        activeElement.blur();
+    }
+}
+
+let scrollTimeout;
+
+// Add event listener to detect scrolling
+document.addEventListener('scroll', handleScroll);
+
+// Add focus event listener to all input and select elements
+let inputs = document.querySelectorAll('input, select');
+inputs.forEach(input => {
+    input.addEventListener('focus', function(event) {
+        if (isScrolling) {
+            input.blur(); // Blur the input if it was focused during scroll
+        }
     });
-
-    // Add focus event listener to all input and select elements
-    let inputs = document.querySelectorAll('input, select');
-    inputs.forEach(input => {
-        input.addEventListener('focus', function(event) {
-            if (isScrolling) {
-                input.blur(); // Blur the input if it was focused during scroll
-            }
-        });
-    });
-
+});
 
             // Handle form submission
             const form = document.querySelector('form');
