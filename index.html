@@ -395,6 +395,7 @@ document.querySelectorAll('.clearable').forEach(input => {
 
         let activeElement = document.activeElement;
         if (activeElement.tagName === 'INPUT' || activeElement.tagName === 'SELECT' || activeElement.tagName === 'TEXTAREA') {
+            console.log('Blurring active element:', activeElement);
             activeElement.blur();
         }
     }
@@ -407,8 +408,10 @@ document.querySelectorAll('.clearable').forEach(input => {
     // Add focus event listener to all input, select, and textarea elements
     let inputs = document.querySelectorAll('input, select, textarea');
     inputs.forEach(input => {
+        console.log('Attaching focus event to:', input);
         input.addEventListener('focus', function(event) {
             if (isScrolling) {
+                console.log('Blurring input during scroll:', input);
                 input.blur(); // Blur the input if it was focused during scroll
             }
         });
