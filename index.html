@@ -184,14 +184,13 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-    const inputFields = document.querySelectorAll('input[type="text"], input[type="number"], textarea');
-
-inputFields.forEach(inputField => {
-  inputField.addEventListener('blur', () => {
-    if (isMobile) {
-      inputField.blur(); // Manually blur the input field to dismiss the keyboard
-    }
-  });
+document.addEventListener('scroll', function() {
+    let inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+        if (document.activeElement === input) {
+            input.blur();
+        }
+    });
 });
     document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('input, textarea').forEach(element => {
