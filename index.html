@@ -358,6 +358,12 @@ document.querySelectorAll('.clearable').forEach(input => {
         <label for="prepayment">Аванс:</label>
         <input type="number" inputmode = "decimal" id="prepayment" name="prepayment" required placeholder="в процентах">
 
+        <label for="extra">Остаток:</label>
+        <select id="extra" name="extra">
+            <option value="до выгрузки">до выгрузки</option>
+            <option value="после выгрузки">после выгрузки</option>
+        </select>
+
         <label for="adr">АДР</label>
         <select id="adr" name="adr">
             <option value="Да">Да</option>
@@ -367,6 +373,10 @@ document.querySelectorAll('.clearable').forEach(input => {
         <label for="tir">ТИР</label>
         <select id="tir" name="tir">
             <option value="Да">Да</option>
+            <optgroup label="Да">
+                <option value="6лист">6лист</option>
+                <option value="12лист">12лист</option>
+            </optgroup>
             <option value="Нет">Нет</option>
         </select>
         
