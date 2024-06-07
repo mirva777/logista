@@ -420,6 +420,15 @@ document.querySelectorAll('.clearable').forEach(input => {
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+const prepaymentInput = document.getElementById('prepayment');
+
+prepaymentInput.addEventListener('input', function() {
+    if (prepaymentInput.value > 100) {
+        prepaymentInput.setCustomValidity('Value must be 100 or less.');
+    } else {
+        prepaymentInput.setCustomValidity('');
+    }
+});
 const input = document.getElementById('username');
 
 input.addEventListener('focus', () => {
