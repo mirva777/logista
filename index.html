@@ -367,6 +367,17 @@ document.querySelectorAll('.clearable').forEach(input => {
         <label for="adr">АДР</label>
         <select id="adr" name="adr">
             <option value="Да">Да</option>
+            <optgroup label="Да">
+                <option value="1-класс">1-класс</option>
+                <option value="2-класс">2-класс</option>
+                <option value="3-класс">3-класс</option>
+                <option value="4-класс">4-класс</option>
+                <option value="5-класс">5-класс</option>
+                <option value="6-класс">6-класс</option>
+                <option value="7-класс">7-класс</option>
+                <option value="8-класс">8-класс</option>
+                <option value="9-класс">9-класс</option>
+            </optgroup>
             <option value="Нет">Нет</option>
         </select>
 
@@ -375,7 +386,7 @@ document.querySelectorAll('.clearable').forEach(input => {
             <option value="Да">Да</option>
             <optgroup label="Да">
                 <option value="6лист">6лист</option>
-                <option value="12лист">12лист</option>
+                <option value="14лист">14лист</option>
             </optgroup>
             <option value="Нет">Нет</option>
         </select>
@@ -391,7 +402,12 @@ document.querySelectorAll('.clearable').forEach(input => {
 
         <label for="contacts">Контакты для связи:</label>
         <textarea id="contacts" name="contacts" required></textarea>
+
+
+        <label for="username">Телеграмм юзернейм:</label>
+        <input type="text" inputmode = "text" id="username" name="username" required>
         
+
         <label for="otherInfo">Прочая информация:</label>
         <textarea id="otherInfo" name="otherInfo" required></textarea>
     
@@ -400,6 +416,19 @@ document.querySelectorAll('.clearable').forEach(input => {
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+const input = document.getElementById('username');
+
+input.addEventListener('focus', () => {
+    if (!input.value.startsWith('@')) {
+        input.value = '@' + input.value;
+    }
+});
+
+input.addEventListener('input', () => {
+    if (!input.value.startsWith('@')) {
+        input.value = '@' + input.value.substring(1);
+    }
+});
  document.addEventListener('DOMContentLoaded', function() {
     let isScrolling = false;
 
