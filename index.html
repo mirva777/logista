@@ -92,6 +92,7 @@
 
         <label for="marshrutType">Тип маршрута:</label>
         <select id="marshrutType" name="marshrut type"> 
+            <option value="Свободный маршрут">Свободный маршрут</option>
             <option value="Через паром">Через паром</option>
             <option value="Через сушу">Через сушу</option>
         </select>
@@ -99,6 +100,7 @@
 
         <label for="trailerType">Тип прицепа:</label>   
         <select id="trailerType" name="trailerType">
+            <option value="Тандем">Тандем</option>
             <option value="Тент">Тент</option>
             <optgroup label="Тент">
                 <option value="Стандарт">Стандарт</option>
@@ -124,7 +126,8 @@
         <label for="paymentType">Тип оплаты:</label>
         <select id="paymentType" name="payment type">
             <option value="Наличными">Наличными</option>
-            <option value="Перевод">Перевод</option>
+            <option value="Перечисление">Перечисление</option>
+            <option value="Комбинированный">Комбинированный</option>
         </select>
 
         <label for="prepayment">Аванс:</label>
@@ -161,6 +164,8 @@
                 <option value="14лист">14лист</option>
             </optgroup>
             <option value="Нет">Нет</option>
+            <option value="CMR">CMR</option>
+            <option value="Обеспечение">Обеспечение</option>
         </select>
         
         <label for="carAmount">Количество машин:</label>
