@@ -240,4 +240,10 @@ document.querySelectorAll('.clearable').forEach(input => {
 
 
 
+function blurInputsOnScroll() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => input.blur());
+}
 
+// Add event listener for scroll event
+window.addEventListener('scroll', blurInputsOnScroll);
