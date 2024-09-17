@@ -94,3 +94,15 @@ input {
     opacity: 0;
     transform: translateY(-20px);
   }
+
+
+select {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
