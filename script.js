@@ -238,12 +238,18 @@ document.querySelectorAll('.clearable').forEach(input => {
     });
 });
 
-
-
-function blurInputsOnScroll() {
-    const inputs = document.querySelectorAll('input');
-    inputs.forEach(input => input.blur());
+function hideKeyboard() {
+    // Find the active element, usually the input field
+    const activeElement = document.activeElement;
+    if (activeElement.tagName === 'INPUT') {
+        activeElement.blur(); // Remove focus, hides the keyboard
+    }
 }
 
-// Add event listener for scroll event
-window.addEventListener('scroll', blurInputsOnScroll);
+// Add event listener for touch or click events
+document.addEventListener('click', function(event) {
+    // Check if the click target is outside the input
+    if (!event.target.closest('input')) {
+        hideKeyboard();
+    }
+});
