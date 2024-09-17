@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+label {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+input[type="text"] {
+position: relative;
+}
+
+.clearable {
+background: #fff url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="none" stroke="%23000" stroke-width="2" d="M3,3 L21,21 M3,21 L21,3"/></svg>') no-repeat right 14px center;
+padding-right: 30px;
+cursor: pointer;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%; /* Easier to tap on mobile */
+    background-color: #0056b3;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.error-message {
+color: red;
+font-size: 12px;
+display: none;
+}
+input[type="submit"]:hover {
+    background-color: #004494;
+}
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        overflow-anchor: auto;
+    }
+    input {
+            font-size: 18px;
+            padding: 16px;
+        }
+    input[type="text"],
+    input[type="number"],
+    textarea {
+    font-size: 16px; /* Set font size to at least 16px to prevent zoom */
+    }
+    .form-container {
+    overflow-anchor: auto; 
+    }
+}
+
+body {
+    height: 200vh; /* Makes sure the page is scrollable */
+  }
+  
+input {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
