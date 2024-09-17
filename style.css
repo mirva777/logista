@@ -105,4 +105,10 @@ select {
     appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
+    content: '▼';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
